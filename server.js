@@ -3,6 +3,8 @@ const bodyParser = require('body-parser');
 const dbConfig = require('./config/database.config.js');
 const mongoose = require('mongoose');
 const UserRoute = require('./app/routes/User')
+const MenuRoute = require('./app/routes/Menu')
+const AuthRoute = require('./app/routes/Auth');  
 
 const app = express();
 
@@ -10,6 +12,8 @@ app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
 
 app.use('/user',UserRoute)
+app.use('/menu',MenuRoute)
+app.use('/auth', AuthRoute)
 
 mongoose.Promise = global.Promise;
 
