@@ -5,15 +5,20 @@ const mongoose = require('mongoose');
 const UserRoute = require('./app/routes/User')
 const MenuRoute = require('./app/routes/Menu')
 const AuthRoute = require('./app/routes/Auth');  
+const IngredientRoute = require('./app/routes/Ingredients');  
+const cors = require('cors');
 
 const app = express();
 
 app.use(bodyParser.urlencoded({ extended: true }))
 app.use(bodyParser.json())
-
+app.use(cors());
 app.use('/user',UserRoute)
 app.use('/menu',MenuRoute)
 app.use('/auth', AuthRoute)
+app.use('/ingredient', IngredientRoute)
+
+app.use('/uploads', express.static('uploads'));
 
 mongoose.Promise = global.Promise;
 
